@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laman Utama Galeri</title>
+    <title>Laman Utama Gallery</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #fffbe6 0%, #ffe6e6 100%), url('background.jpg') no-repeat center center fixed;
+            background: linear-gradient(120deg, rgba(255,251,230,0.85) 0%, rgba(255,230,230,0.7) 100%), url('background.jpg') no-repeat center center fixed;
             background-blend-mode: lighten;
             background-size: cover;
             margin: 0;
@@ -24,53 +24,93 @@
             to { opacity: 1; }
         }
         .container {
-            background: rgba(255,255,255,0.96);
-            border-radius: 22px;
-            box-shadow: 0 8px 32px rgba(255, 204, 51, 0.13), 0 2px 16px rgba(0,0,0,0.10);
-            padding: 56px 36px 44px 36px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 28px;
+            box-shadow: 0 12px 40px 0 rgba(255, 204, 51, 0.18), 0 4px 24px rgba(0,0,0,0.13);
+            padding: 64px 40px 48px 40px;
             text-align: center;
-            max-width: 420px;
-            margin: 32px 16px;
+            max-width: 440px;
+            margin: 36px 16px;
             animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+            backdrop-filter: blur(2.5px);
+            position: relative;
         }
         @keyframes popIn {
             0% { transform: scale(0.92) translateY(30px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -18px; left: -18px; right: -18px; bottom: -18px;
+            border-radius: 36px;
+            background: linear-gradient(120deg, #ffecb3 0%, #ffe6e6 100%);
+            opacity: 0.18;
+            z-index: 0;
+            filter: blur(8px);
+        }
         h1 {
             color: #ffb347;
-            font-size: 2.6rem;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 12px rgba(255, 204, 51, 0.18);
-            font-weight: 800;
+            font-size: 2.7rem;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 4px 18px rgba(255, 204, 51, 0.22);
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
         }
         p {
             color: #444;
-            font-size: 1.18rem;
-            margin-bottom: 36px;
-            line-height: 1.6;
+            font-size: 1.22rem;
+            margin-bottom: 38px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
         a.button {
             background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
             color: #222;
             border: none;
-            border-radius: 12px;
-            padding: 14px 38px;
-            font-size: 1.15rem;
-            font-weight: 700;
+            border-radius: 14px;
+            padding: 16px 44px;
+            font-size: 1.18rem;
+            font-weight: 800;
             text-decoration: none;
-            box-shadow: 0 4px 16px rgba(255, 204, 51, 0.18);
-            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(255, 204, 51, 0.18);
+            transition: background 0.22s, color 0.22s, transform 0.22s, box-shadow 0.22s;
             display: inline-block;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.7px;
             outline: none;
+            position: relative;
+            z-index: 1;
         }
         a.button:hover, a.button:focus {
             background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
             color: #000;
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 204, 51, 0.22);
+            transform: scale(1.10) translateY(-3px) rotate(-1deg);
+            box-shadow: 0 12px 32px rgba(255, 204, 51, 0.22);
+        }
+        /* Decorative floating shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.18;
+            z-index: 0;
+            filter: blur(2px);
+            animation: floatShape 7s ease-in-out infinite alternate;
+        }
+        .shape1 {
+            width: 90px; height: 90px; background: #ffb347; top: -40px; left: -40px; animation-delay: 0s;
+        }
+        .shape2 {
+            width: 60px; height: 60px; background: #ffcc33; bottom: -30px; right: -30px; animation-delay: 2s;
+        }
+        .shape3 {
+            width: 40px; height: 40px; background: #ffe6e6; top: 60px; right: -20px; animation-delay: 4s;
+        }
+        @keyframes floatShape {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(18px) scale(1.08); }
         }
         @media (max-width: 600px) {
             .container {
@@ -91,10 +131,13 @@
     </style>
 </head>
 <body>
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
     <div class="container">
-        <h1>Selamat Datang ke Laman Galeri Rosdyiana</h1>
+        <h1>Selamat Datang ke Laman Gallery Rosdyiana</h1>
         <p></p>
-        <a href="gallery_code.html" class="button">Masuk ke Galeri</a>
+        <a href="gallery_code.html" class="button">Masuk ke Gallery</a>
     </div>
 </body>
 </html>
