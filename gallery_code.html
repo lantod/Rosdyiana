@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Gambar</title>
+    <title>Gallery Gambar</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #fffbe6 0%, #ffe6e6 100%), url('background.jpg') no-repeat center center fixed;
+            background: linear-gradient(135deg, #fffbe6 0%, #ffe6e6 100%), url('p1.jpg') no-repeat center center fixed;
             background-blend-mode: lighten;
             background-size: cover;
             margin: 0;
@@ -96,6 +96,67 @@
             transform: scale(1.09);
             box-shadow: 0 8px 24px rgba(255, 204, 51, 0.22);
         }
+        /* Modal Password */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.32);
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-bg.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #fffbe6;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(255, 204, 51, 0.18), 0 2px 16px rgba(0,0,0,0.13);
+            padding: 36px 28px 28px 28px;
+            min-width: 280px;
+            max-width: 90vw;
+            text-align: center;
+            animation: popIn 0.5s;
+        }
+        .modal-box h3 {
+            color: #ffb347;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        .modal-box input[type="password"] {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1.5px solid #ffcc33;
+            font-size: 1.08rem;
+            margin-bottom: 18px;
+            width: 90%;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .modal-box input[type="password"]:focus {
+            border: 1.5px solid #ffb347;
+        }
+        .modal-box .modal-btn {
+            background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+            color: #222;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255, 204, 51, 0.15);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .modal-box .modal-btn:hover {
+            background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+            color: #000;
+            transform: scale(1.07);
+        }
         @media (max-width: 700px) {
             .gallery {
                 gap: 18px;
@@ -116,29 +177,23 @@
             }
         }
     </style>
-    <script>
-        function checkPassword(page) {
-            let password = '';
-            if (page === 'page1.html' || page === 'page3.html') {
-                password = '070105';
-            } else if (page === 'page2.html' || page === 'page4.html') {
-                password = '060701';
-            }
-            const userInput = prompt('Sila masukkan kata laluan untuk akses:');
-            if (userInput === password) {
-                window.location.href = page;
-            } else if (userInput !== null) {
-                alert('Kata laluan salah!');
-            }
-        }
-    </script>
 </head>
 <body>
-    <h2 style="text-align:center; margin-top:32px;">Galeri Rosdyiana</h2>
+    <div id="modal-bg" class="modal-bg">
+        <div class="modal-box">
+            <h3>Sila masukkan kata laluan untuk akses</h3>
+            <input type="password" id="password-input" placeholder="Kata Laluan" autocomplete="off" />
+            <div style="margin-top:18px;">
+                <button class="modal-btn" onclick="submitPassword()">OK</button>
+                <button class="modal-btn" onclick="closeModal()">Batal</button>
+            </div>
+        </div>
+    </div>
+    <h2 style="text-align:center; margin-top:32px;">Gallery Rosdyiana</h2>
     <div class="gallery">
         <div class="item">
             <img src="p1.jpg" alt="Gambar 1">
-            <div class="caption">saya harap awak suka walaupun tak lawa apa yang saya buat</div>
+            <div class="caption">saya harap awak suka</div>
             <button style="margin-top:10px;" onclick="checkPassword('page1.html')">Lihat Lagi</button>
         </div>
         <div class="item">
@@ -157,5 +212,40 @@
             <button style="margin-top:10px;" onclick="checkPassword('page4.html')">Lihat Lagi</button>
         </div>
     </div>
+    <script>
+    function checkPassword(targetPage) {
+        document.getElementById('modal-bg').classList.add('active');
+        document.getElementById('password-input').value = '';
+        document.getElementById('password-input').focus();
+        document.getElementById('modal-bg').setAttribute('data-target', targetPage);
+    }
+    function submitPassword() {
+        var targetPage = document.getElementById('modal-bg').getAttribute('data-target');
+        var password = '';
+        if (targetPage === 'page1.html') {
+            password = '070105';
+        } else if (targetPage === 'page2.html') {
+            password = '060701';
+        } else if (targetPage === 'page3.html') {
+            password = '060705';
+        } else if (targetPage === 'page4.html') {
+            password = '070601';
+        }
+        var userInput = document.getElementById('password-input').value;
+        if (userInput === password) {
+            window.location.href = targetPage;
+        } else {
+            alert('Kata laluan salah!');
+        }
+    }
+    function closeModal() {
+        document.getElementById('modal-bg').classList.remove('active');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('password-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') submitPassword();
+        });
+    });
+    </script>
 </body>
 </html>
