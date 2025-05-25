@@ -3,40 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Rosdyiana - Gambar Tambahan 2</title>
+    <title>Gallery Rosdyiana - Page 2</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #111; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 32px; }
-        h2 { text-align: center; }
-        .back { margin-bottom: 20px; }
-        .gallery { display: flex; flex-wrap: wrap; gap: 16px; }
-        .item { flex: 1 1 calc(50% - 16px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
-        .item img { width: 100%; display: block; }
-        .caption { padding: 8px; text-align: center; background: #f1f1f1; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #ffe6e6 0%, #fffbe6 100%),
+            url('p2-1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInBg 1.2s;
+        }
+        @keyframes fadeInBg {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .content {
+            background: rgba(255,255,255,0.93);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(255, 204, 51, 0.18),
+            0 2px 16px rgba(0,0,0,0.13);
+            padding: 48px 32px 40px 32px;
+            text-align: center;
+            max-width: 420px;
+            position: relative;
+            animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.92) translateY(30px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        h2 {
+            color: #ffb347;
+            font-size: 2.1rem;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px rgba(255, 204, 51, 0.18);
+            font-weight: 800;
+            animation: fadeInText 1.2s;
+        }
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .gallery-img {
+            width: 90%;
+            max-width: 320px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(255, 204, 51, 0.13);
+            margin-bottom: 22px;
+            animation: imgPop 1.2s;
+            transition: opacity 0.2s;
+        }
+        @keyframes imgPop {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .gallery-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .gallery-thumb {
+            width: 70px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(255, 204, 51, 0.10);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .gallery-thumb:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 16px rgba(255, 204, 51, 0.18);
+        }
+        .desc {
+            font-size: 1.13rem;
+            color: #2d2d2d;
+            font-weight: 600;
+            margin-bottom: 28px;
+            letter-spacing: 0.2px;
+            animation: fadeInText 1.5s 0.3s both;
+        }
+        .back-btn {
+            background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+            color: #222;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 32px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255, 204, 51, 0.15);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+            color: #000;
+            transform: scale(1.07);
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInText 2s 0.5s forwards;
+        }
+        .fade-img {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a class="back" href="gallery_code.html">&larr; Kembali ke Galeri</a>
-        <h2>Gambar Tambahan 2</h2>
-        <div class="gallery">
-            <div class="item">
-                <img src="p2-1.jpg" alt="Gambar 1">
-                <div class="caption">Gambar kenangan 1</div>
-            </div>
-            <div class="item">
-                <img src="p2-2.jpg" alt="Gambar 2">
-                <div class="caption">Gambar kenangan 2</div>
-            </div>
-            <div class="item">
-                <img src="p2-3.jpg" alt="Gambar 3">
-                <div class="caption">Gambar kenangan 3</div>
-            </div>
-            <div class="item">
-                <img src="p2-4.jpg" alt="Gambar 4">
-                <div class="caption">Gambar kenangan 4</div>
-            </div>
+    <div class="content">
+        <h2>Gallery Rosdyiana - Page 2</h2>
+        <img src="p2-1.jpg" alt="Rosdyiana 2" class="gallery-img" id="main-img">
+        <div class="gallery-row">
+            <img src="p2-1.jpg" alt="Rosdyiana 2-1" class="gallery-thumb" onclick="changeMainImg('p2-1.jpg')">
+            <img src="p2-2.jpg" alt="Rosdyiana 2-2" class="gallery-thumb" onclick="changeMainImg('p2-2.jpg')">
+            <img src="p2-3.jpg" alt="Rosdyiana 2-3" class="gallery-thumb" onclick="changeMainImg('p2-3.jpg')">
+            <img src="p2-4.jpg" alt="Rosdyiana 2-4" class="gallery-thumb" onclick="changeMainImg('p2-4.jpg')">
         </div>
+        <div class="typewriter">Setiap detik bersama awak sangat bermakna.</div>
+        <div class="desc fade-in">Terima kasih, Rosdyiana.</div>
+        <button class="back-btn" onclick="window.location.href='gallery_code.html'">Kembali ke Gallery</button>
     </div>
+    <script>
+    function changeMainImg(src) {
+        const mainImg = document.getElementById('main-img');
+        if(mainImg.src.includes(src)) return;
+        mainImg.classList.add('fade-img');
+        setTimeout(() => {
+            mainImg.src = src;
+            mainImg.classList.remove('fade-img');
+        }, 200);
+    }
+    </script>
 </body>
 </html>
